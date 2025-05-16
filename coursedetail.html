@@ -1,64 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="In-depth course details for EduVerse learners." />
-  <title>EduVerse | Course Details</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master web development with our comprehensive bootcamp covering HTML, CSS, JavaScript, and modern frameworks.">
+    <title>Web Development Bootcamp | EduVerse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e54c8;
+            --secondary-color: #8f94fb;
+            --accent-color: #f6d365;
+            --dark-color: #2a2d3b;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+        }
+        
+        nav {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.2rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .course-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .course-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .course-header p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .meta-item i {
+            color: var(--primary-color);
+        }
+        
+        .enroll-btn {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(78, 84, 200, 0.3);
+        }
+        
+        .enroll-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(78, 84, 200, 0.4);
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-color), #fda085);
+            border-radius: 2px;
+        }
+        
+        .flex {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .instructor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .instructor-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .instructor-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .instructor-bio {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        video {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .curriculum {
+            margin-top: 2rem;
+        }
+        
+        .module {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .module-header {
+            background-color: var(--light-color);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .module-header:hover {
+            background-color: #f0f2f5;
+        }
+        
+        .module-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .lesson {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            align-items: center;
+        }
+        
+        .lesson:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .lesson-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        details {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        summary {
+            padding: 1rem 1.5rem;
+            background-color: var(--light-color);
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        details[open] summary::after {
+            content: '-';
+        }
+        
+        details[open] {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        details p {
+            padding: 1rem 1.5rem;
+            background-color: white;
+            margin: 0;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--border-color);
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav {
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .course-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="courses.html"><i class="fas fa-book-open"></i> Courses</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="coursedetail.html"><i class="fas fa-graduation-cap"></i> Course Detail</a>
+    </nav>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="courses.html">Courses</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="container">
-    <h1>Web Development Bootcamp</h1>
-    <p>Master HTML, CSS, and JavaScript to build modern web applications from scratch.</p>
-
-    <section>
-      <h2>Intro Video</h2>
-      <video width="100%" controls>
-        <source src="videos/webdev-intro.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </section>
-
-    <section>
-      <h2>Instructor</h2>
-      <div class="flex">
-        <div>
-          <img src="images/instructor.jpg" alt="Instructor" style="width: 150px; border-radius: 50%;">
+    <div class="container">
+        <div class="course-header">
+            <h1>Web Development Bootcamp</h1>
+            <p>Master HTML, CSS, JavaScript, and modern frameworks to build responsive, interactive web applications from scratch.</p>
+            
+            <div class="course-meta">
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 Weeks</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Beginner to Advanced</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificate Included</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>5,000+ Students</span>
+                </div>
+            </div>
+            
+            <button class="enroll-btn">
+                <i class="fas fa-arrow-right"></i> Enroll Now
+            </button>
         </div>
-        <div>
-          <h3>Dr. Priya Sharma</h3>
-          <p>Senior Web Developer with 10+ years of experience in full-stack development.</p>
-        </div>
-      </div>
-    </section>
+    
+        <section>
+            <h2>Course Introduction</h2>
+            <video width="100%" controls poster="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                <source src="videos/webdev-intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="course-description" style="margin-top: 2rem;">
+                <p>This comprehensive bootcamp will take you from absolute beginner to job-ready web developer. You'll learn:</p>
+                <ul style="margin: 1rem 0 1rem 2rem; line-height: 1.8;">
+                    <li>Fundamentals of HTML5, CSS3, and JavaScript ES6+</li>
+                    <li>Responsive design with Flexbox and CSS Grid</li>
+                    <li>Frontend frameworks like React.js</li>
+                    <li>Backend development with Node.js and Express</li>
+                    <li>Database integration with MongoDB</li>
+                    <li>Deployment and DevOps basics</li>
+                </ul>
+                <p>By the end of this course, you'll have built a professional portfolio including 5+ real-world projects.</p>
+            </div>
+        </section>
+    
+        <section>
+            <h2>Your Instructor</h2>
+            <div class="flex">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Dr. Priya Sharma" class="instructor-img">
+                </div>
 
-    <section>
-      <h2>FAQs</h2>
+                <div class="instructor-info">
+                    <h3>Dr. Priya Sharma</h3>
+                    <p>Senior Web Developer & Educator</p>
+                    <div class="instructor-rating" style="color: #f8c51c; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: #666; margin-left: 0.5rem;">4.8 (1,200 reviews)</span>
+                    </div>
+                    <div class="instructor-bio">
+                        <p>With over 10 years of experience in full-stack development, Dr. Sharma has worked with companies like Google, Amazon, and numerous startups. She holds a PhD in Computer Science from Stanford University and has been teaching web development since 2015.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Course Curriculum</h2>
+            <div class="curriculum">
+                <div class="module">
+                    <div class="module-header">
+                        <span>Module 1: HTML & CSS Fundamentals</span>
+                        <span>8 Lessons • 6 Hours</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="far fa-play-circle" style="color: var(--primary-color);"></i>
+                                <span>Introduction to Web Development</span>
+                            </div>
+                            <span class="lesson-duration">45 min</span>
+                        </div>
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="far fa-play-circle" style="color: var(--primary-color);"></i>
+                                <span>HTML5 Semantic Structure</span>
+                            </div>
+                            <span class="lesson-duration">1.5 hours</span>
+                        </div>
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="fas fa-laptop-code" style="color: var(--primary-color);"></i>
+                                <span>Project: Personal Portfolio Page</span>
+                            </div>
+                            <span class="lesson-duration">2 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <span>Module 2: JavaScript Essentials</span>
+                        <span>12 Lessons • 10 Hours</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="far fa-play-circle" style="color: var(--primary-color);"></i>
+                                <span>JavaScript Basics & DOM Manipulation</span>
+                            </div>
+                            <span class="lesson-duration">2 hours</span>
+                        </div>
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="far fa-play-circle" style="color: var(--primary-color);"></i>
+                                <span>ES6+ Features (Arrow functions, Destructuring, etc.)</span>
+                            </div>
+                            <span class="lesson-duration">2.5 hours</span>
+                        </div>
+                        <div class="lesson">
+                            <div class="lesson-info">
+                                <i class="fas fa-laptop-code" style="color: var(--primary-color);"></i>
+                                <span>Project: Interactive Quiz App</span>
+                            </div>
+                            <span class="lesson-duration">3 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>What Our Students Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        This course completely transformed my career. Within 3 months of completing it, I landed my first web developer job at a tech startup!
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Patel" class="author-img">
+                        <div class="author-info">
+                            <h4>Rahul Patel</h4>
+                            <p>Junior Developer at TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        Dr. Sharma's teaching style is exceptional. She breaks down complex concepts into easy-to-understand lessons with practical examples.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Desai" class="author-img">
+                        <div class="author-info">
+                            <h4>Priya Desai</h4>
+                            <p>Freelance Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section>
+            <h2>FAQs</h2>
+    
+            <details>
+                <summary>What are the prerequisites for this course?</summary>
+                <p>Basic understanding of computers and internet navigation is recommended. No prior coding experience is required - we start from the very basics!</p>
+            </details>
+    
+            <details>
+                <summary>Will I receive a certificate upon completion?</summary>
+                <p>Yes, you'll receive a verifiable certificate of completion after finishing all course modules and submitting the final project. Our certificates are recognized by industry partners.</p>
+            </details>
+            
+            <details>
+                <summary>How long will I have access to the course materials?</summary>
+                <p>You'll have lifetime access to all course materials, including future updates. We regularly refresh content to keep up with industry changes.</p>
+            </details>
+            
+            <details>
+                <summary>Is there any support available if I get stuck?</summary>
+                <p>Absolutely! You'll have access to our student community forum and can request help from our team of teaching assistants. Dr. Sharma also hosts weekly Q&A sessions.</p>
+            </details>
+        </section>
+    </div>
 
-      <details>
-        <summary>What are the prerequisites?</summary>
-        <p>Basic understanding of computers and internet. No coding experience required.</p>
-      </details>
+    <footer>
+        <p>&copy; 2025 EduVerse. All rights reserved.</p>
+    </footer>
 
-      <details>
-        <summary>Is there a certificate?</summary>
-        <p>Yes, a certificate of completion is provided after successful assessment.</p>
-      </details>
-    </section>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 EduVerse. All rights reserved.</p>
-  </footer>
-
+    <script>
+        // Simple animation for module headers
+        document.querySelectorAll('.module-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                if (content.style.display === 'none' || !content.style.display) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,10 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="EduVerse is your gateway to quality online education." />
-  <meta name="keywords" content="online courses, education, elearning" />
-  <title>EduVerse | Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Learn more about EduVerse and our mission." />
+  <title>EduVerse | About Us</title>
+  <style>
+    :root {
+      --primary-color: #4e54c8;
+      --secondary-color: #8f94fb;
+      --accent-color: #f6d365;
+      --dark-color: #2a2d3b;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+      --border-color: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #f5f7fa;
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: var(--accent-color);
+      color: #333;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #fda085;
+      transform: translateY(-3px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark-color);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-color), #fda085);
+      border-radius: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    article {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    article h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    article p {
+      color: #555;
+    }
+
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 0;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,7 +193,7 @@
     <a href="courses.html">Courses</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
-    <a href="coursedetail.html">Course Detaili </a>
+    <a href="coursedetail.html">Course Detail</a>
   </nav>
 
   <section class="hero">
@@ -27,21 +205,23 @@
   <div class="container">
     <section>
       <h2>Why EduVerse?</h2>
-      <p>At EduVerse, we offer top-quality online education for learners around the world.</p>
+      <p>At EduVerse, we offer top-quality online education for learners around the world. Our mission is to bridge the gap between curiosity and capability by providing interactive, flexible, and certified learning experiences.</p>
     </section>
 
     <section class="grid">
       <article>
         <h3>Certified Courses</h3>
-        <p>Recognized by leading institutions and taught by experts.</p>
+        <p>Recognized by leading institutions and taught by experts who know their stuff (and how to make it fun!).</p>
       </article>
+
       <article>
         <h3>Interactive Learning</h3>
-        <p>Engage with instructors and peers through rich content.</p>
+        <p>Engage with instructors and peers through rich, dynamic content — not just static PDFs and yawns.</p>
       </article>
+
       <article>
         <h3>Flexible Schedule</h3>
-        <p>Learn at your own pace with our self-paced courses.</p>
+        <p>Learn at your own pace with our self-paced courses. Because who said education can't work around brunch?</p>
       </article>
     </section>
   </div>
